@@ -343,7 +343,7 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
 
 
 
-        scaling_factor= (double) (size.y*metrics.ydpi*asdf.button_factor/(854.0*240.0));
+        scaling_factor= (double) (size.y*240.0*asdf.button_factor/(854.0*metrics.ydpi));
 
 
         //changed_color_play= ScaleDrawable(changed_color_play,,double,double)
