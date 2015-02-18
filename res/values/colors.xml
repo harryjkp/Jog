@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colour_of_plain_text">#ffffffff</color>
+    <color name="colour_of_spinner_text">@color/colour_of_plain_text</color>
+    <color name="colour_of_speed_text">@color/colour_of_plain_text</color>
+    <color name="colour_of_numberpicker_text">@color/colour_of_plain_text</color>
+    <color name="colour_of_buttons_text">@color/colour_of_plain_text</color>
+    <color name="playlist_colour">#033452</color>
+    <color name="but_bar_colour">#033452</color>
+    <color name="act_bar_colour">#01253B</color>
+
+
+</resources>

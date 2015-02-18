@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="speed_units">
+        <item>mps</item>
+        <item>mph</item>
+        <item>kph</item>
+        <item>pace (minutes per mile)</item>
+        <item>pace (minutes per kilometer)</item></string-array>
+    <string-array name="speed_units_Alias" >
+    <item>1</item>
+    <item>0.44704</item>
+    <item>0.277777</item>
+    <item>1</item>
+    <item>1</item></string-array>
+
+</resources>

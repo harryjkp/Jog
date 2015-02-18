@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<TextView
+
+    android:id="@+id/trouble_spinner"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="20sp"
+    android:gravity="left"
+
+    android:padding="30dp"
+    android:textColor="@color/colour_of_spinner_text"
+
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+    <!--android:textColor="@string/colour_of_spinner_text"-->
+
+    <!--android:textColor="#FF0000"-->

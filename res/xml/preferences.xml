@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    <EditTextPreference
+            android:key="target_speed_from_settings"
+            android:title="Speed"
+            android:summary="helloo"
+
+            android:defaultValue="true" />-->
+
+    <ListPreference
+        android:key="language_preference"
+        android:title="Units"
+        android:entries="@array/speed_units"
+        android:entryValues="@array/speed_units_Alias"
+        android:defaultValue="Italian"/>
+    <CheckBoxPreference
+        android:key="invert"
+        android:title="Invert Sound?"
+        android:summary="helloo"
+        android:defaultValue="true"
+        />
+
+</PreferenceScreen>
