@@ -733,8 +733,14 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
 
 
         if (asdf.newtime-asdf.oldtime>1){
-            asdf.fakespeedfactorfrommps=PreferenceManager.getDefaultSharedPreferences(this).getString("language_preference", "");
-            asdf.speedfactorfrommps=Double.parseDouble(asdf.fakespeedfactorfrommps);
+            try {
+                asdf.fakespeedfactorfrommps = PreferenceManager.getDefaultSharedPreferences(this).getString("language_preference", "");
+                asdf.speedfactorfrommps = Double.parseDouble(asdf.fakespeedfactorfrommps);
+            }catch (NumberFormatException nfe){
+                asdf.speedfactorfrommps =1.0;
+
+            }
+
             if(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("invert",true)) {
                 asdf.invert =1;
 

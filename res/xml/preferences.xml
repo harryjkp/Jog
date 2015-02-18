@@ -12,7 +12,8 @@
         android:title="Units"
         android:entries="@array/speed_units"
         android:entryValues="@array/speed_units_Alias"
-        android:defaultValue="1.0"/>
+        android:defaultValue="1.0"
+        />
     <CheckBoxPreference
         android:key="invert"
         android:title="Invert Sound?"
