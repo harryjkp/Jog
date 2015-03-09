@@ -45,7 +45,7 @@ public class asdf {
     public static String m3u;
     public static Context context;
     public static int var10;
-    public static int var11=0;
+    public static int var11;
     public static String m4u;
     public static Uri temp;
     public static Context temp2;
@@ -71,4 +71,9 @@ public class asdf {
     public static String bloop;
     public static double button_factor=0.3;
     public static double minor_button_factor=1.0;
+    public static boolean playing;
+    public static int spin_pos;
+    public static int stopthatplayer=0;
+    public static boolean playingisit;
+    public static int started=0;
 }

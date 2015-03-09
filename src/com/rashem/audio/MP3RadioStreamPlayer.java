@@ -43,8 +43,9 @@ public class MP3RadioStreamPlayer {
 	 * Delegate to receive notifications
 	 */
 	protected MP3RadioStreamDelegate mDelegate;
-	
-	/**
+    private int myvar11=asdf.var11;
+
+    /**
  	 * Set the delegate for this instance. The delegate will receive notifications about the player's status
  	 * 
  	 * @param mDelegate
@@ -113,6 +114,7 @@ public class MP3RadioStreamPlayer {
 	 */
 	public void play() throws IOException
 	{
+        asdf.playing=true;
 		mState = State.Retrieving;
 		mDelegateHandler.onRadioPlayerBuffering(MP3RadioStreamPlayer.this);
 		doStop = false;
@@ -266,6 +268,12 @@ public class MP3RadioStreamPlayer {
 
 
             while (!sawOutputEOS && noOutputCounter < noOutputCounterLimit && !doStop) {
+                asdf.playingisit=true;
+                if (asdf.stopthatplayer==1^asdf.var11!=myvar11){
+                    stop();
+                    asdf.playingisit=false;
+                    asdf.stopthatplayer=0;
+                }
 
                 synchronized (this) {
                     while (asdf.var15 == 1) {

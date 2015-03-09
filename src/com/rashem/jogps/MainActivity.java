@@ -90,6 +90,8 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
     private View button_bar;
     private Drawable changed_color_pause;
     private boolean been=false;
+    private Spinner spinner;
+
 
     public void PlaySongsFromAPlaylist(int playListID){
 
@@ -306,7 +308,21 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        asdf.started=0;
         super.onCreate(savedInstanceState);
+        String a = getIntent().getAction();
+        String b = Intent.ACTION_MAIN;
+        boolean c = isTaskRoot();
+
+        if (!isTaskRoot()
+                && getIntent().hasCategory(Intent.CATEGORY_LAUNCHER)
+                && getIntent().getAction() != null
+                && getIntent().getAction().equals(Intent.ACTION_MAIN)) {
+
+            finish();
+            return;
+        }
+
 
 
         //ColorDrawable colorback = new ColorDrawable(R.color.act_bar_colour);
@@ -426,7 +442,7 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
         }
 
         cursor.close();
-        Spinner spinner = (Spinner) findViewById(R.id.planets_spinner);
+        spinner = (Spinner) findViewById(R.id.planets_spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
         //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
         //        R.array.planets_array, android.R.layout.simple_spinner_item);
@@ -435,7 +451,9 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinner.setAdapter(spinnerArrayAdapter);
+        
         spinner.setOnItemSelectedListener(this);
+
         buildGoogleApiClient();
 
 
@@ -453,18 +471,18 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
 
         });
 
-        editText = (EditText) findViewById(R.id.speed);
+        //editText = (EditText) findViewById(R.id.speed);
         mdisplayspeed = (TextView) findViewById(R.id.textdisplayspeed);
-        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+/*        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
 
-                asdf.targetspeed=((double)Integer.parseInt(textView.getText().toString()))*asdf.speedfactorfrommps;//*0.44704;//()(string)asdf.fleepers;//(double)i*0.44704;
+                asdf.targetspeed=((double)Integer.parseInt(textView.getText().toString()))*asdf.speedfactorfrommps;/*//*0.44704;//()(string)asdf.fleepers;//(double)i*0.44704;
 
 
                 return false;
             }
-        });
+        });*/
         //button_bar=this.findViewById(R.id.button_bar);
 
 
@@ -483,6 +501,7 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
                             //changed_color_play=R.drawable.button_play
                             mPlayButton.setCompoundDrawablesWithIntrinsicBounds( changed_color_play, null, null,null);//mPlayButton.setCompoundDrawablesWithIntrinsicBounds( R.drawable.button_play, 0, 0,0);
                         } else {
+
                             unpause();
                             mPlayButton.setCompoundDrawablesWithIntrinsicBounds( changed_color_pause, null, null,null);
                         }
@@ -585,6 +604,8 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
         if (been==false) {
             View vg = findViewById (R.id.relativeLayout);
             vg.invalidate();
+            spinner.setSelection(asdf.spin_pos);
+            //started=true;
 /*            super.onWindowFocusChanged(hasFocus);
             ViewGroup.LayoutParams params = mPlayButton.getLayoutParams();
             float eep = mPlayButton.getWidth();
@@ -759,14 +780,25 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
 
 
                 }
-
+/*                if (player==null&&asdf.playingisit){
+                    while (asdf.playingisit){
+                    asdf.stopthatplayer=1;
+                }
+                    asdf.stopthatplayer=0;
+                    play();
+                }*/
 
                 if (player != null) {
                     play();
                 }
+                if (asdf.playingisit==false){
+                    stop();
+                }
+                asdf.playingisit=false;
             }}catch(NumberFormatException nfe){
 
             }
+
 
 
 
@@ -895,7 +927,11 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
         asdf.var15=1;
     }
     private void unpause(){
+
         asdf.var15=0;
+        if (!asdf.playingisit){
+            play();
+        }
     }
 
     private void play()
@@ -1030,12 +1066,14 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
+        if (asdf.started>2){
         if (pos!=0){
+            asdf.spin_pos=pos;
             asdf.noplay=0;
             asdf.var11 = 0;
             asdf.m3u=playlist_ids.get(pos);
             PlaySongsFromAPlaylist(Integer.valueOf(asdf.m3u));
-            if (player != null) {
+            if (player != null^true) {
                 stop();
             }
         }else{
@@ -1043,6 +1081,9 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
             stop();
         }
 
+
+    }
+        asdf.started=asdf.started+1;
     }
 
     @Override
