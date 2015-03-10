@@ -380,6 +380,14 @@ public class MP3RadioStreamPlayer {
 
                     }
                     asdf.convertedtargetspeed=asdf.targetspeed*asdf.speedfactorfrommps;
+                    if (asdf.speedfactorfrommps>5){//------------------------------------------------------------------------cheat
+                        try {
+                            asdf.convertedtargetspeed = asdf.speedfactorfrommps / asdf.targetspeed;
+                        }catch(Exception e){
+
+                        }
+
+                    }
                     asdf.var3 = asdf.var3 * 0.99 + 0.01 * (asdf.orig_rate / 2 + ((asdf.orig_rate * asdf.k)/ (2.0 * asdf.convertedtargetspeed)));
 
                     if (asdf.var3 < asdf.orig_rate / 2) {
@@ -392,6 +400,9 @@ public class MP3RadioStreamPlayer {
 
                     int final_rate = ((int) asdf.orig_rate +asdf.invert*((int)asdf.orig_rate- (int) (asdf.var3)));
                     final_rate = (int) (1 * final_rate + 0 * asdf.orig_rate);
+                    if (asdf.convertedtargetspeed==0){
+                        final_rate=(int)asdf.orig_rate;
+                    }
 
                     audioTrack.setPlaybackRate(final_rate);//2 * (int) asdf.orig_rate - (int) (asdf.var3));///(int) (asdf.orig_rate*asdf.k/4.0));//(int) (asdf.orig_rate-asdf.k));//asdf.orig_rate*asdf.k/4.0
                     if (chunk.length > 0) {

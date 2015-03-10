@@ -18,7 +18,7 @@
         android:key="invert"
         android:title="Invert Sound?"
         android:summary="helloo"
-        android:defaultValue="true"
+        android:defaultValue="false"
         />
 
 </PreferenceScreen>

@@ -91,6 +91,7 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
     private Drawable changed_color_pause;
     private boolean been=false;
     private Spinner spinner;
+    private int old_pos=99999;
 
 
     public void PlaySongsFromAPlaylist(int playListID){
@@ -314,13 +315,13 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
         String b = Intent.ACTION_MAIN;
         boolean c = isTaskRoot();
 
-        if (!isTaskRoot()
+        if (asdf.playingisit
                 && getIntent().hasCategory(Intent.CATEGORY_LAUNCHER)
                 && getIntent().getAction() != null
                 && getIntent().getAction().equals(Intent.ACTION_MAIN)) {
 
-            finish();
-            return;
+            //finish();
+
         }
 
 
@@ -788,11 +789,11 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
                     play();
                 }*/
 
-                if (player != null) {
+                if (true){//player != null^true) {
                     play();
                 }
                 if (asdf.playingisit==false){
-                    stop();
+                    //stop();
                 }
                 asdf.playingisit=false;
             }}catch(NumberFormatException nfe){
@@ -935,26 +936,28 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
     }
 
     private void play()
+
     {
-        if(player != null)
-        {
-            player.stop();
-            player.release();
-            player = null;
+        if (asdf.noplay != 1) {
+            if (player != null) {
+                player.stop();
+                player.release();
+                player = null;
 
-        }
+            }
 
-        player = new MP3RadioStreamPlayer();
-        player.setUrlString("http://www.tonycuffe.com/mp3/tail%20toddle.mp3");
+            player = new MP3RadioStreamPlayer();
+            player.setUrlString("http://www.tonycuffe.com/mp3/tail%20toddle.mp3");
 
-        player.setDelegate(this);
+            player.setDelegate(this);
 
-        showGUIBuffering();
+            showGUIBuffering();
 
-        try {
-            player.play();
-        } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                player.play();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1066,23 +1069,25 @@ public class MainActivity extends Activity implements MP3RadioStreamDelegate,Goo
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
-        if (asdf.started>2){
-        if (pos!=0){
+        if (asdf.spin_pos!=pos){
             asdf.spin_pos=pos;
+        if (pos!=0){
+
             asdf.noplay=0;
             asdf.var11 = 0;
             asdf.m3u=playlist_ids.get(pos);
             PlaySongsFromAPlaylist(Integer.valueOf(asdf.m3u));
-            if (player != null^true) {
+            if (true){//player != null^true) {
                 stop();
             }
-        }else{
-            asdf.noplay=1;
-            stop();
         }
 
 
     }
+        if (pos==0){
+            asdf.noplay=1;
+            stop();
+        }
         asdf.started=asdf.started+1;
     }
 
