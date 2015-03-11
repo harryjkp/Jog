@@ -76,4 +76,9 @@ public class asdf {
     public static int stopthatplayer=0;
     public static boolean playingisit;
     public static int started=0;
+    public static long last_played=0;
+    public static int grad_return=0;
+    public static boolean gui_play_state=false;
+    public static int furthest;
+    public static boolean reached_end;
 }

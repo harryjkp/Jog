@@ -9,15 +9,15 @@
 
     <ListPreference
         android:key="language_preference"
-        android:title="Units"
+        android:title="@string/units"
         android:entries="@array/speed_units"
         android:entryValues="@array/speed_units_Alias"
         android:defaultValue="1.0"
         />
     <CheckBoxPreference
         android:key="invert"
-        android:title="Invert Sound?"
-        android:summary="helloo"
+        android:title="@string/invert_sound"
+        android:summary="@string/invert_explanation"
         android:defaultValue="false"
         />
 

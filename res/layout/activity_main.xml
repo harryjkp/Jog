@@ -80,7 +80,7 @@
                    android:layout_weight="1.5"
                    android:layout_width="0dp" />
 
-            <com.rashem.jogps.fumberPicker
+            <com.rashem.doppler.fumberPicker
                 android:layout_weight="8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                 android:id="@+id/numberpicker1">
 
 
-            </com.rashem.jogps.fumberPicker>
+            </com.rashem.doppler.fumberPicker>
                 <Space android:layout_height="match_parent"
                     android:layout_weight="0"
                     android:layout_width="0dp" />
@@ -103,8 +103,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:text="Current
-Speed"
+                    android:text="@string/current_speed"
                     android:textColor="@color/colour_of_plain_text"
                 />
 
@@ -114,8 +113,7 @@ Speed"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Target
-Speed"
+                    android:text="@string/target_speed"
                     android:textColor="@color/colour_of_plain_text" />
 
             </TableRow>

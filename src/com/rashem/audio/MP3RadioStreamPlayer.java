@@ -17,8 +17,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import com.rashem.jogps.SettingsActivity;
-
 import static java.lang.Double.isNaN;
 
 public class MP3RadioStreamPlayer {
@@ -265,9 +263,19 @@ public class MP3RadioStreamPlayer {
             boolean sawOutputEOS = false;
             int noOutputCounter = 0;
             int noOutputCounterLimit = 50;
+            int instance_no = asdf.furthest+1;
+
+            asdf.furthest=instance_no;
 
 
             while (!sawOutputEOS && noOutputCounter < noOutputCounterLimit && !doStop) {
+                //counter3++;
+                if (asdf.furthest!=instance_no){
+                    stop();
+                }else{
+                    //
+                }
+                
                 asdf.playingisit=true;
                 if (asdf.stopthatplayer==1^asdf.var11!=myvar11){
                     stop();
@@ -400,8 +408,12 @@ public class MP3RadioStreamPlayer {
 
                     int final_rate = ((int) asdf.orig_rate +asdf.invert*((int)asdf.orig_rate- (int) (asdf.var3)));
                     final_rate = (int) (1 * final_rate + 0 * asdf.orig_rate);
-                    if (asdf.convertedtargetspeed==0){
-                        final_rate=(int)asdf.orig_rate;
+
+                    if (asdf.targetspeed==0){
+                        asdf.grad_return= (int) (asdf.grad_return*0.5+0.5*asdf.orig_rate);
+                        final_rate = (int) asdf.orig_rate; //(int) (asdf.grad_return);
+                    }else{
+                        asdf.grad_return=final_rate;
                     }
 
                     audioTrack.setPlaybackRate(final_rate);//2 * (int) asdf.orig_rate - (int) (asdf.var3));///(int) (asdf.orig_rate*asdf.k/4.0));//(int) (asdf.orig_rate-asdf.k));//asdf.orig_rate*asdf.k/4.0
@@ -449,6 +461,7 @@ public class MP3RadioStreamPlayer {
                     if (asdf.var11 == asdf.no_songs) {
                         asdf.var11 = 0;
                         asdf.oldvar12 = 1;
+                        //asdf.reached_end=true; is what oldvar12 is for
                     }
                     stop();
                 }

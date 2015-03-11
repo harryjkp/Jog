@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="http://schemas.android.com/apk/res/android">
 
-    <string name="app_name">Doppler</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name"><xliff:g>Doppler</xliff:g></string>
+
+
     <string name="menu_settings">Settings</string>
-    <string-array name="planets_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
-    </string-array>
+    <string name="Spinner_init">Select Playlist</string>
+    <string name="current_speed">Current Speed</string>
+    <string name="target_speed">Target Speed</string>
+
+
+    <string name="invert_sound">Invert Sound</string>
+    <!-- decide how the music speeds up or slows down - speeds up when you speed up or slows down when you speed up   -->
+    <string name="invert_explanation">Make the music speed change with or against you</string>
+
+    <!--miles per hour etc.-->
+    <string name="units">Units</string>
+
 
 </resources>
