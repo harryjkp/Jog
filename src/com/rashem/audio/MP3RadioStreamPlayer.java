@@ -396,7 +396,7 @@ public class MP3RadioStreamPlayer {
                         }
 
                     }
-                    asdf.var3 = asdf.var3 * 0.99 + 0.01 * (asdf.orig_rate / 2 + ((asdf.orig_rate * asdf.k)/ (2.0 * asdf.convertedtargetspeed)));
+                    asdf.var3 = asdf.var3 * 0.99 + 0.01 * (asdf.orig_rate / 2 + ((asdf.orig_rate * asdf.lastnonzerok)/ (2.0 * asdf.convertedtargetspeed)));
 
                     if (asdf.var3 < asdf.orig_rate / 2) {
                         asdf.var3 = asdf.orig_rate / 2;

@@ -6,7 +6,9 @@ import android.location.Location;
 import android.net.Uri;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Plays a MP3 Radio stream using MediaExtractor, MediaCodec and AudioTrack
@@ -81,4 +83,5 @@ public class asdf {
     public static boolean gui_play_state=false;
     public static int furthest;
     public static boolean reached_end;
+    public static Iterator<Locale> berp;
 }

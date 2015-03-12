@@ -21,6 +21,15 @@
     <orderEntry type="library" name="google-play-services" level="project" />
     <orderEntry type="library" name="google-play-services" level="project" />
     <orderEntry type="library" name="google-play-services" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/commons-collections-3.2.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
 
